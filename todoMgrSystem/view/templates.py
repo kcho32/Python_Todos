@@ -1,3 +1,4 @@
+from controller import views
 from entity.models import Display,Todo
 from controller import views
 from exception.exception import NoneTypeError
@@ -36,11 +37,48 @@ def message_display(message):
 def mod_display():
     Display().id_display("수정")
     mod_id = Display().id_select()
-    title = str(input("Title: "))
-    content = str(input("Content: "))
-    date = str(input("Date(MM/DD): "))
-    done = str(input("Done(Y/N): "))
-    return Todo(mod_id, title, content, date, done)
+    data = views.get_schedule(mod_id)
+    print(data.todo_show())
+    Display().mod_sub()
+    choice = Display().mod_sub_select()
+    
+
+    if choice == "1":
+        title = str(input("Title: "))
+        content = data.content
+        date = data.date
+        done = data.done
+        return Todo(mod_id, title, content, date, done)
+    elif choice == "2":
+        content = str(input("Content: "))
+        title = data.title
+        date = data.date
+        done = data.done
+        return Todo(mod_id, title, content, date, done)
+    elif choice == "3":
+        date = str(input("Date(MMDD): "))
+        content = data.content
+        title = data.title
+        done = data.done
+        return Todo(mod_id, title, content, date, done)
+    elif choice == "4":
+        done = str(input("Done(Y/N): "))
+        content = data.content
+        date = data.date
+        title = data.title
+        return Todo(mod_id, title, content, date, done)
+    elif choice == "5":
+        title = str(input("Title: "))
+        content = str(input("Content: "))
+        date = str(input("Date(MMDD): "))
+        done = str(input("Done(Y/N): "))
+        return Todo(mod_id, title, content, date, done)
+    elif choice == "6":
+        print("돌아갑니다.")
+        return data
+    else:
+        print("잘못 입력하셨습니다")
+        return data
 
 
 def del_display():

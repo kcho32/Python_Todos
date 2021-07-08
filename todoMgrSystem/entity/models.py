@@ -5,7 +5,7 @@ class Todo():
         self.title = str(title)
         self.content = str(content)
         self.date = str(date)
-        self.done = str(done)
+        self.done = done
         
     def todo_show(self):
         phrase = "ID:\t\t{0}\nTitle:\t\t{1}\nContent:\t{2}\nDate:\t\t{3}\nDone:\t\t{4}\n".format(self.id, self.title, self.content, self.date, self.done)
@@ -37,6 +37,22 @@ class Display():
     def id_select(self):
         id = str(input("ID: "))
         return id
+
+    def mod_sub(self):
+        print("수정하고 싶은 데이터를 선택하세요")
+        print("1. title")
+        print("2. content")
+        print("3. date")
+        print("4. done")
+        print("5. all")
+        print("6. 취소")
+
+    def mod_sub_select(self):
+        choice = str(input("선택: "))
+        return choice
+
+
+
 
 
     
