@@ -8,17 +8,17 @@ class SaveLoad():
         pass
 
     def save(self, save_list):
-        save_file = open("todoMgrSystem/data.dat", "w")
+        save_file = open("../todoMgrSystem/data.dat", "w")
         for index, schedule in enumerate(save_list):
             print()
             save_file.write("{0},{1},{2},{3},{4}\n".format(save_list[index].id,save_list[index].title,save_list[index].content,save_list[index].date,save_list[index].done))
         save_file.close()
         
     def load(self):
-        fileExist = os.path.isfile("todoMgrSystem/data.dat")
+        fileExist = os.path.isfile("../todoMgrSystem/data.dat")
         schedule = []
         if fileExist:
-            load_file = open("todoMgrSystem/data.dat", "r")
+            load_file = open("../todoMgrSystem/data.dat", "r")
             while True:
                 data = load_file.readline().strip("\n")
                 if not data:
